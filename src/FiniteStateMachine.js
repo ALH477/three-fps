@@ -1,5 +1,3 @@
-
-
 class FiniteStateMachine {
     constructor() {
         this.states = {};
@@ -14,10 +12,10 @@ class FiniteStateMachine {
         const prevState = this.currentState;
         
         if (prevState) {
-        if (prevState.Name == name) {
-            return;
-        }
-        prevState.Exit();
+            if (prevState.Name == name) {
+                return;
+            }
+            prevState.Exit();
         }
 
         this.currentState = this.states[name];
@@ -27,7 +25,7 @@ class FiniteStateMachine {
     Update(timeElapsed) {
         this.currentState && this.currentState.Update(timeElapsed);
     }
-};
+}
 
 class State {
     constructor(parent) {
@@ -37,6 +35,6 @@ class State {
     Enter() {}
     Exit() {}
     Update() {}
-};
+}
 
-export {State, FiniteStateMachine}
+export { State, FiniteStateMachine }
