@@ -1,11 +1,11 @@
-export default class Component{
-    constructor(){
+export default class Component {
+    constructor() {
         this.parent = null;
     }
 
-    Initialize(){}
+    Initialize() {}
 
-    SetParent(parent){
+    SetParent(parent) {
         this.parent = parent;
     }
 
@@ -17,11 +17,11 @@ export default class Component{
         return this.parent.FindEntity(name);
     }
 
-    Broadcast(msg){
+    Broadcast(msg) {
         this.parent.Broadcast(msg);
     }
 
     Update(_) {}
 
-    PhysicsUpdate(_){}
+    PhysicsUpdate(_) {}
 }
