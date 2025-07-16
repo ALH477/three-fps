@@ -1,7 +1,7 @@
 import { Vector3, Quaternion } from 'three';
 
-export default class Entity{
-    constructor(){
+export default class Entity {
+    constructor() {
         this.name = null;
         this.components = {};
         this.position = new Vector3();
@@ -10,40 +10,40 @@ export default class Entity{
         this.eventHandlers = {};
     }
 
-    AddComponent(component){
+    AddComponent(component) {
         component.SetParent(this);
         this.components[component.name] = component;
     }
 
-    SetParent(parent){
+    SetParent(parent) {
         this.parent = parent;
     }
 
-    SetName(name){
+    SetName(name) {
         this.name = name;
     }
 
-    get Name(){
+    get Name() {
         return this.name;
     }
 
-    GetComponent(name){
+    GetComponent(name) {
         return this.components[name];
     }
 
-    SetPosition(position){
+    SetPosition(position) {
         this.position.copy(position);
     }
 
-    get Position(){
+    get Position() {
         return this.position;
     }
 
-    SetRotation(rotation){
+    SetRotation(rotation) {
         this.rotation.copy(rotation);
     }
 
-    get Rotation(){
+    get Rotation() {
         return this.rotation;
     }
 
@@ -51,25 +51,23 @@ export default class Entity{
         return this.parent.Get(name);
     }
 
-    RegisterEventHandler(handler, topic){
-        if(!this.eventHandlers.hasOwnProperty(topic)){
+    RegisterEventHandler(handler, topic) {
+        if (!this.eventHandlers.hasOwnProperty(topic)) {
             this.eventHandlers[topic] = [];
         }
-
         this.eventHandlers[topic].push(handler);
     }
 
-    Broadcast(msg){
-        if(!this.eventHandlers.hasOwnProperty(msg.topic)){
+    Broadcast(msg) {
+        if (!this.eventHandlers.hasOwnProperty(msg.topic)) {
             return;
         }
-
-        for(const handler of this.eventHandlers[msg.topic]){
+        for (const handler of this.eventHandlers[msg.topic]) {
             handler(msg);
         }
     }
 
-    PhysicsUpdate(world, timeStep){
+    PhysicsUpdate(world, timeStep) {
         for (let k in this.components) {
             this.components[k].PhysicsUpdate(world, timeStep);
         }
@@ -77,7 +75,7 @@ export default class Entity{
 
     Update(timeElapsed) {
         for (let k in this.components) {
-          this.components[k].Update(timeElapsed);
+            this.components[k].Update(timeElapsed);
         }
     }
 }
