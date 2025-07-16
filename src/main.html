@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeMoD</title>
+    <!-- jQuery Terminal Includes -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.45.0/js/jquery.terminal.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.45.0/css/jquery.terminal.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            overflow: hidden;
+            font-family: 'IBM Plex Mono', monospace;
+            background: #000;
+            color: #fff;
+            font-size: 16px;
+        }
+        #terminal {
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            color: #fff;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            border: none;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 100% 2px;
+            display: block;
+        }
+        .terminal, .terminal .cmd, .terminal .cmd .cursor.blink {
+            color: #fff;
+        }
+        .terminal {
+            text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+        }
+        #terminal.red-theme {
+            background: #300;
+            color: #f88;
+        }
+        #terminal.red-theme .terminal, #terminal.red-theme .cmd, #terminal.red-theme .cmd .cursor.blink {
+            color: #f88;
+        }
+        #progress { position: absolute; bottom: 0; left: 0; height: 5px; background: red; width: 0%; }
+        #canvas-container { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+    </style>
+</head>
+<body>
+    <div id="terminal"></div>
+    <div id="progress"></div>
+    <div id="canvas-container"></div>
+
+    <!-- Preloaded Audio Files -->
+    <audio id="audio-track1" preload="auto" src="/track1.mp3"></audio>
+    <audio id="audio-track2" preload="auto" src="/track2.mp3"></audio>
+    <audio id="audio-petabyte" preload="auto" src="/petabyte.mp3"></audio>
+
+    <script type="module" src="entry.js"></script>
+</body>
+</html>
